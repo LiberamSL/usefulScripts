@@ -13,6 +13,10 @@ A variety of scripts to use on a daily basis
 **Transformamos el Tiff a COG**
 gdal_translate ortoInn.tiff ortoOut.tif -of COG -co COMPRESS=DEFLATE -co BIGTIFF=YES -co NUM_THREADS=ALL_CPUS
 
+**Cortar, comprimir y transformar a COG**
+
+for i in *.tif; do gdalwarp -overwrite -of GTiff -cutline corte.geojson -cl corte -crop_to_cutline -dstalpha  -co COMPRESS=LZW -co PREDICTOR=2 $i new/$i; done
+
 ## ogr2ogr 
 **Transformar varias capas vectoriales:: geojson en SRC 25830 a formato kml en SRC 4326**
 `for i in *.geojson; do ogr2ogr -f "KML" -s_srs EPSG:25830 -t_srs EPSG:4326 kml/$i.kml $i; done`
