@@ -6,6 +6,7 @@ A variety of scripts to use on a daily basis
 ## GDAL
 **Compresión / Asignación SRC**
 `gdalwarp -t_srs EPSG:25830 -co COMPRESS=JPEG -of GTiff input.tif output.tif`
+`gdal_translate -of COG -co COMPRESS=DEFLATE -co PHOTOMETRIC=RGB input.tif output.tif`
 
 **Extraer banda**
 `gdal_translate -b 1 -of AAIGrid ortomosaico.tif ortomosaico_band1.asc` 
